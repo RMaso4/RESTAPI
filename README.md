@@ -15,14 +15,38 @@ Data wordt opgehaald via de CoinGecko API.
 
 ## Installatie
 
-1. Installeer dependencies:
+1. Activeer de virtual environment:
+
+   **PowerShell:**
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
    ```
-pip install -r requirements.txt
+
+   **Command Prompt:**
+   ```cmd
+   .\.venv\Scripts\activate.bat
    ```
-2. Start de server:
+
+   Als je een execution policy error krijgt in PowerShell, run dan eerst:
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
-uvicorn main:app --reload
+
+2. Installeer dependencies (als de venv actief is):
+   ```bash
+   pip install -r requirements.txt
    ```
+
+3. Start de server:
+   ```bash
+   uvicorn main:app --reload
+   ```
+
+   **Let op:** Je kunt FastAPI niet starten met `python main.py` - je moet `uvicorn main:app --reload` gebruiken omdat FastAPI een ASGI framework is.
+
+4. Open de API:
+   - API endpoints: `http://127.0.0.1:8000/crypto`
+   - Interactieve documentatie: `http://127.0.0.1:8000/docs`
 
 ## Testen
 
